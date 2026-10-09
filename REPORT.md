@@ -9,14 +9,14 @@
 
 ## 1. CẤU TRÚC DỰ ÁN TRƯỚC VÀ SAU REFACTOR (E1)
 
-### Trước khi Refactor (Bản 1-file ban đầu - Commit `0f2b41b`)
+### Trước khi Refactor (Bản 1-file ban đầu)
 ```
 PHPLab01/
 ├── index.php      # Chứa toàn bộ hằng số, dữ liệu raw, ép kiểu, tính toán và HTML
 └── .gitignore
 ```
 
-### Sau khi Refactor (Kiến trúc Modular - Commit `129e6fa` / `main`)
+### Sau khi Refactor (Kiến trúc Modular)
 ```
 PHPLab01/
 ├── index.php                 # Entry point; require_once các module theo thứ tự
@@ -45,12 +45,9 @@ php inspect-types.php
 
 ### Kết quả Terminal CLI:
 ```text
-==============================================================
-   PHPLab01 - TYPE INSPECTION & NORMALIZATION EVIDENCE (E2)   
-==============================================================
+PHPLab01 - TYPE INSPECTION & NORMALIZATION EVIDENCE (E2)
 
 [1] RAW INPUT INSPECTION (Truoc khi casting):
---------------------------------------------------------------
 Biến $rawQuantity:
   - gettype($rawQuantity) : string
   - var_dump($rawQuantity) : string(1) "3"
@@ -62,13 +59,11 @@ Biến $productAvailable:
   - var_dump($productAvailable) : bool(true)
 
 [2] NORMALIZATION / CASTING (Sau khi ep kieu tuong minh):
---------------------------------------------------------------
 Thuc hien: $quantity = (int) $rawQuantity;
   - gettype($quantity)    : integer
   - var_dump($quantity)    : int(3)
 
 [3] BUSINESS CONDITIONS & CALCULATIONS:
---------------------------------------------------------------
   - $canCheckout (Boolean)       : true
   - $subtotal (Intermediate)     : 135.000 VND
   - $isMember (Strict Equality)  : true
@@ -79,9 +74,7 @@ Thuc hien: $quantity = (int) $rawQuantity;
   - $total Payment               : 142.575 VND
   - Order Status                 : READY TO ORDER
 
-==============================================================
-   KET QUA: PHP CLI chay thanh cong, khong co Parse Error!    
-==============================================================
+Kết quả: PHP CLI chạy thành công, không có Parse Error.
 ```
 
 ---
@@ -124,19 +117,17 @@ php test-matrix.php
 
 ## 5. GIT REPOSITORY & COMMIT PROGRESSION (E6) & BRANCH / PR DIFF (E7)
 
-### Lịch sử Commit (`git log --graph --oneline --all`):
+### Lịch sử Commit:
 ```text
-* 9a266e6 docs/test: add manual test evidence and test matrix
-*   3d6a379 merge: merge branch 'refactor/modular-architecture' into main
-|\  
-| * 129e6fa refactor: split config data logic view
-|/  
-* 0f2b41b feat: add calculations and receipt
-* e3e83ed feat: add raw data and constants
-* ec0db45 chore: initialize PHP assignment
+docs/test: add manual test evidence and test matrix
+merge: merge branch 'refactor/modular-architecture' into main
+refactor: split config data logic view
+feat: add calculations and receipt
+feat: add raw data and constants
+chore: initialize PHP assignment
 ```
 
-### Bằng chứng Branch & Code Diff (E7 - `git diff 0f2b41b..129e6fa --stat`):
+### Bằng chứng Branch & Code Diff (E7):
 ```text
  config/constants.php   |   6 +++
  data/checkout-data.php |   6 +++
